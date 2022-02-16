@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>TestUnitTesting</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{b50e2f5c-f00c-4c6b-84fd-a5aebdb14186}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>TestUnitTesting</RootNamespace>
+    <AssemblyName>TestUnitTesting</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="00100_Extensions" />
+    <Folder Include="00200_UnitTests" />
+    <Folder Include="00300_Delete_Extensions" />
+    <Folder Include="00200_UnitTests\00050_Create_TestEnviroment" />
+    <Folder Include="00200_UnitTests\00500_Programming_objects" />
+    <Folder Include="00200_UnitTests\09000_Delete_TestEnviroment" />
+    <Folder Include="00400_IntegrationTests" />
+    <Folder Include="00400_IntegrationTests\00100_TestEnviroment" />
+    <Folder Include="00400_IntegrationTests\00100_TestEnviroment\00500_Programming_objects" />
+    <Folder Include="00400_IntegrationTests\00100_TestEnviroment\00300_Data_structure" />
+    <Folder Include="00400_IntegrationTests\00100_TestEnviroment\00100_Indipendent_objects" />
+    <Folder Include="00400_IntegrationTests\00100_TestEnviroment\09000_DeleteTestEnviroment" />
+    <Folder Include="00400_IntegrationTests\00050_Extensions" />
+    <Folder Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests" />
+    <Folder Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run  SqlScriptsWithPowershell" />
+    <Folder Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run  SqlScriptsWithPowershell\00200_UnitTests" />
+    <Folder Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run  SqlScriptsWithPowershell\00200_UnitTests\00500_Programming_objects" />
+    <Folder Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run SqlScriptsWithPowershell" />
+    <Folder Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run SqlScriptsWithPowershell\00200_UnitTests" />
+    <Folder Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run SqlScriptsWithPowershell\00200_UnitTests\00500_Programming_objects" />
+    <Folder Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run_ SqlScriptsWithPowershell" />
+    <Folder Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run_ SqlScriptsWithPowershell\00200_UnitTests" />
+    <Folder Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run_ SqlScriptsWithPowershell\00200_UnitTests\00500_Programming_objects" />
+    <Folder Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run_SqlScriptsWithPowershell" />
+    <Folder Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run_SqlScriptsWithPowershell\00200_UnitTests" />
+    <Folder Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run_SqlScriptsWithPowershell\00200_UnitTests\00500_Programming_objects" />
+    <Folder Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\RunSqlScriptsWithPowershell" />
+    <Folder Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\RunSqlScriptsWithPowershell\00200_UnitTests" />
+    <Folder Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\RunSqlScriptsWithPowershell\00200_UnitTests\00500_Programming_objects" />
+    <Folder Include="00200_UnitTests\01000_test" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="00400_IntegrationTests\00100_TestEnviroment\00100_Indipendent_objects\00100_AutomateRunTests_db.sql" />
+    <None Include="00400_IntegrationTests\00100_TestEnviroment\09000_DeleteTestEnviroment\00100_DeleteTestEnviroment_scr.sql" />
+    <None Include="00200_UnitTests\RunTests.ps1" />
+    <None Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\RunSqlScriptsWithPowershell\00200_UnitTests\RunTests.ps1" />
+    <None Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run_SqlScriptsWithPowershell\00200_UnitTests\RunTests.ps1" />
+    <None Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run_ SqlScriptsWithPowershell\00200_UnitTests\RunTests.ps1" />
+    <None Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run SqlScriptsWithPowershell\00200_UnitTests\RunTests.ps1" />
+    <None Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run  SqlScriptsWithPowershell\00200_UnitTests\RunTests.ps1" />
+    <None Include="00200_UnitTests\00500_Programming_objects\00100_tst_dbo.AddTestframeworkParameters_usp.sql" />
+    <None Include="00200_UnitTests\00500_Programming_objects\00200_tst_dbo.ModifyTestframeworkParameters_usp.sql" />
+    <None Include="00200_UnitTests\00500_Programming_objects\00300_tst_dbo.DeleteTestFrameworkParameters_usp.sql" />
+    <None Include="00200_UnitTests\00500_Programming_objects\00400_tst_dbo.AddTestScriptDirectory_usp.sql" />
+    <None Include="00200_UnitTests\00500_Programming_objects\00500_tst_dbo.DeleteTestScriptDirectory_usp.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="00400_IntegrationTests\00100_TestEnviroment\00500_Programming_objects\0001000_dbo.GetFizzBuzzResult_udf.sql" />
+    <None Include="00400_IntegrationTests\00100_TestEnviroment\00500_Programming_objects\0002000_dbo.GetBuzzFizzResult_udf.sql" />
+    <None Include="00400_IntegrationTests\00100_TestEnviroment\00500_Programming_objects\0003000_dbo.InsertFizzBuzzResultTable_usp.sql" />
+    <None Include="00400_IntegrationTests\00100_TestEnviroment\00300_Data_structure\0001000_dbo.FizzBuzzResult_tbl.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="00100_ExecuteTests.sql" />
+    <None Include="00400_IntegrationTests\00100_TestEnviroment\00100_CreateTestEnviroment_scr.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="00400_IntegrationTests\00100_ExecuteTests.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\RunSqlScriptsWithPowershell\00200_UnitTests\00500_Programming_objects\0001000_tst_dbo.GetFizzBuzzResult_udf.sql" />
+    <Build Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\RunSqlScriptsWithPowershell\00200_UnitTests\00500_Programming_objects\0002000_tst_dbo.GetBuzzFizzResult_udf.sql" />
+    <Build Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\RunSqlScriptsWithPowershell\00200_UnitTests\00500_Programming_objects\0003000_tst_dbo.InsertFizzBuzzResultTable_usp.sql" />
+    <Build Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run_SqlScriptsWithPowershell\00200_UnitTests\00500_Programming_objects\0001000_tst_dbo.GetFizzBuzzResult_udf.sql" />
+    <Build Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run_SqlScriptsWithPowershell\00200_UnitTests\00500_Programming_objects\0002000_tst_dbo.GetBuzzFizzResult_udf.sql" />
+    <Build Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run_SqlScriptsWithPowershell\00200_UnitTests\00500_Programming_objects\0003000_tst_dbo.InsertFizzBuzzResultTable_usp.sql" />
+    <Build Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run_ SqlScriptsWithPowershell\00200_UnitTests\00500_Programming_objects\0001000_tst_dbo.GetFizzBuzzResult_udf.sql" />
+    <Build Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run_ SqlScriptsWithPowershell\00200_UnitTests\00500_Programming_objects\0002000_tst_dbo.GetBuzzFizzResult_udf.sql" />
+    <Build Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run_ SqlScriptsWithPowershell\00200_UnitTests\00500_Programming_objects\0003000_tst_dbo.InsertFizzBuzzResultTable_usp.sql" />
+    <Build Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run SqlScriptsWithPowershell\00200_UnitTests\00500_Programming_objects\0001000_tst_dbo.GetFizzBuzzResult_udf.sql" />
+    <Build Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run SqlScriptsWithPowershell\00200_UnitTests\00500_Programming_objects\0002000_tst_dbo.GetBuzzFizzResult_udf.sql" />
+    <Build Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run SqlScriptsWithPowershell\00200_UnitTests\00500_Programming_objects\0003000_tst_dbo.InsertFizzBuzzResultTable_usp.sql" />
+    <Build Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run  SqlScriptsWithPowershell\00200_UnitTests\00500_Programming_objects\0001000_tst_dbo.GetFizzBuzzResult_udf.sql" />
+    <Build Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run  SqlScriptsWithPowershell\00200_UnitTests\00500_Programming_objects\0002000_tst_dbo.GetBuzzFizzResult_udf.sql" />
+    <Build Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run  SqlScriptsWithPowershell\00200_UnitTests\00500_Programming_objects\0003000_tst_dbo.InsertFizzBuzzResultTable_usp.sql" />
+    <None Include="00100_Extensions\2.1.1.1__UnitTestingTestFramework.sql" />
+    <None Include="00100_Extensions\2.1.1.1_UnitTestingTestFrameworkConfiguring.sql" />
+    <None Include="00300_Delete_Extensions\2.1.1.1__UnitTestingTestFrameworkDeleting.sql" />
+    <Build Include="00400_IntegrationTests\00050_Extensions\2.1.1.1__UnitTestingTestFramework.sql" />
+  </ItemGroup>
+</Project>
