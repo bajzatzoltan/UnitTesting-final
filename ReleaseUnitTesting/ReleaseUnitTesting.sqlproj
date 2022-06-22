@@ -61,11 +61,19 @@
     <Folder Include="Full\2.0.1.0__release" />
     <Folder Include="Full\2.1.1.0__release" />
     <Folder Include="Full\2.1.1.1__release" />
+    <Folder Include="Full\3.0.0.0_Preview_release" />
+    <Folder Include="Full\3.0.0.0_Preview_release\Framework" />
+    <Folder Include="Full\3.0.0.0_Preview_release\Snippets" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Full\2.0.1.0__release\RunTests_IntegratedSec.ps1" />
     <None Include="Full\2.1.1.0__release\RunTests.ps1" />
     <None Include="Full\2.1.1.1__release\RunTests.ps1" />
+    <None Include="Full\3.0.0.0_Preview_release\Framework\RunTests.ps1" />
+    <None Include="Full\3.0.0.0_Preview_release\Snippets\TestFunction.snippet" />
+    <None Include="Full\3.0.0.0_Preview_release\Snippets\TestFunctionTableComparePreview.snippet" />
+    <None Include="Full\3.0.0.0_Preview_release\Snippets\TestProcedure.snippet" />
+    <None Include="Full\3.0.0.0_Preview_release\Snippets\TestProcedureTableComparePreview.snippet" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Full\2.0.1.0__release\00100_ExecuteTests.sql" />
@@ -84,5 +92,11 @@
     <None Include="Full\2.1.1.1__release\2.1.1.1__UnitTestingTestFrameworkDeleting.sql" />
     <None Include="Full\2.1.1.1__release\2.1.1.1_UnitTestingTestFrameworkConfiguring.sql" />
     <None Include="Full\2.1.1.1__release\00100_ExecuteTests.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Full\3.0.0.0_Preview_release\Framework\3.0.0.0_Preview_UnitTestingTestFramework.sql" />
+    <None Include="Full\3.0.0.0_Preview_release\Framework\3.0.0.0_Preview_UnitTestingTestFrameworkConfiguring.sql" />
+    <None Include="Full\3.0.0.0_Preview_release\Framework\3.0.0.0_Preview_UnitTestingTestFrameworkDeleting.sql" />
+    <None Include="Full\3.0.0.0_Preview_release\Framework\00100_ExecuteTests.sql" />
   </ItemGroup>
 </Project>
