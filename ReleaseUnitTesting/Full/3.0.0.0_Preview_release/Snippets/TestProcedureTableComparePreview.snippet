@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>TestProcedure_TableCompare_Preview</Title>
+			<Shortcut>tstpr</Shortcut>
+			<Description>Test block for procedure</Description>
+			<Author>BZ</Author>
+		</Header>
+		<Snippet>
+			<Code Language="SQL_SSDT" Kind="any">
+				<![CDATA[
+USE UnitTesting
+GO
+---------------------------------------------
+PRINT 'Create test helpers...';
+---------------------------------------------
+GO
+CREATE
+OR ALTER
+PROCEDURE dbo.DeleteTestTables_usp
+AS
+BEGIN
+	SET NOCOUNT ON;
+	DELETE FROM DatabaseName.ErrorHandler.ErrorLog;
+END;
+
+GO
+PRINT 'dbo.DeleteTestTables_usp was created.';
+---------------------------------------------
+
+GO
+CREATE
+OR ALTER
+PROCEDURE dbo.RestoreIdentities_usp
+AS
+BEGIN
+	SET NOCOUNT ON;
+	DBCC CHECKIDENT ('DatabaseName.ErrorHandler.ErrorLog', RESEED, 0) WITH NO_INFOMSGS;
+END;
+
+GO
+PRINT 'dbo.RestoreIdentities_usp was created.';
+---------------------------------------------
+
+GO
+CREATE
+OR ALTER
+PROCEDURE dbo.SetNoCheckConstraint_usp
+AS
+BEGIN
+	SET NOCOUNT ON;
+	ALTER TABLE DatabaseName.SchemaName.TableName NOCHECK CONSTRAINT ALL;
+END;
+
+GO
+PRINT 'dbo.SetNoCheckConstraint_usp was created.';
+---------------------------------------------
+
+GO
+CREATE
+OR ALTER
+PROCEDURE dbo.SetCheckConstraint_usp
+AS
+BEGIN
+	SET NOCOUNT ON;
+	ALTER TABLE DatabaseName.SchemaName.TableName WITH CHECK CHECK CONSTRAINT ALL;
+END;
+
+GO
+PRINT 'dbo.SetCheckConstraint_usp was created.';
+---------------------------------------------
+
+GO
+CREATE
+OR ALTER
+PROCEDURE dbo.SetTestEnviroment_usp
+AS
+BEGIN
+	EXEC dbo.DeleteTestTables_usp;
+	EXEC dbo.RestoreIdentities_usp;
+	EXEC dbo.SetNoCheckConstraint_usp;
+END;
+
+GO
+PRINT 'dbo.SetTestEnviroment_usp was created.';
+---------------------------------------------
+
+GO
+CREATE
+OR ALTER
+PROCEDURE dbo.RestoreTestEnviroment_usp
+AS
+BEGIN
+	SET NOCOUNT ON;
+	EXEC dbo.DeleteTestTables_usp;
+	EXEC dbo.RestoreIdentities_usp;
+	EXEC dbo.SetCheckConstraint_usp;
+END;
+
+GO
+PRINT 'dbo.RestoreTestEnviroment_usp was created.';
+GO
+PRINT 'Test helpers created.';
+PRINT '---------------------------------------------';
+GO
+---------------------------------------------
+---------------------------------------------
+
+
+USE UnitTesting
+GO
+	EXEC UnitTesting.Assert.TablesComparerConstructor_usp @columnDefinition = 'ID INT';
+GO
+BEGIN;	
+	SET NOCOUNT ON; 
+	BEGIN TRY;
+		DECLARE	@TESTNUMBER NVARCHAR(50) = 'testNumber';
+		DECLARE @METHODNAME NVARCHAR(100) = 'SchemaName.FunctionName';
+		DECLARE	@TESTNAME NVARCHAR(200) = 'Test name';
+		DECLARE @TESTRESULT NVARCHAR(10) = 'False';
+		PRINT CONCAT(@TESTNUMBER,': ',@METHODNAME, ' - ', @TESTNAME); 
+		INSERT INTO UnitTesting.dbo.TestResults(TestNumber, MethodName,TestName, TestResult) VALUES (@TESTNUMBER, @METHODNAME, @TESTNAME, @TESTRESULT)
+		EXEC UnitTesting.dbo.SetTestEnviroment_usp;
+		
+		DECLARE @resultTable Assert.ComparedType_ttyp;
+		DECLARE @expectedTable Assert.ComparedType_ttyp;
+		
+		--INSERT INTO @expectedTable (ID) VALUES (1);
+		--INSERT INTO @expectedTable (ID) VALUES (2);
+		
+		INSERT INTO @resultTable (ID) 
+			EXEC DbName.SchemaName.ProcedureName;
+				
+		SET @TESTRESULT = UnitTesting.Assert.CompareTables_udf(@expectedTable, @resultTable);
+
+	END TRY
+	BEGIN CATCH;
+			--PRINT( CONCAT('ERROR_NUMBER: ', ERROR_NUMBER()));
+			--PRINT( CONCAT('ERROR_SEVERITY: ', ERROR_SEVERITY()));
+			--PRINT( CONCAT('ERROR_STATE: ', ERROR_STATE()));
+			--PRINT( CONCAT('ERROR_PROCEDURE: ', ERROR_PROCEDURE()));
+			--PRINT( CONCAT('ERROR_MESSAGE: ', ERROR_MESSAGE()));
+			SET @TESTRESULT = 'False'
+	END CATCH;
+		PRINT CONCAT('TEST RESULT: ', @TESTRESULT);
+		UPDATE UnitTesting.dbo.TestResults SET TestResult = @TESTRESULT WHERE TestNumber = @TESTNUMBER  AND MethodName = @METHODNAME;
+		EXEC UnitTesting.RestoreTestEnviroment_usp;
+		PRINT '---------------------------------------------';
+END;
+GO
+	EXEC UnitTesting.Assert.TablesComparerDestructor_usp;
+
+
+---------------------------------------------
+---------------------------------------------
+PRINT 'Drop test helpers...';
+---------------------------------------------
+GO
+DROP PROCEDURE dbo.SetTestEnviroment_usp;
+PRINT 'dbo.SetTestEnviroment_usp was droped.';
+---------------------------------------------
+GO
+DROP PROCEDURE dbo.RestoreTestEnviroment_usp;
+PRINT 'dbo.RestoreTestEnviroment_usp was droped.';
+---------------------------------------------
+GO
+DROP PROCEDURE  dbo.DeleteTestTables_usp;
+PRINT 'dbo.DeleteTestTables_usp was droped.';
+---------------------------------------------
+GO
+DROP PROCEDURE  dbo.RestoreIdentities_usp;
+PRINT 'dbo.RestoreIdentities_usp was droped.';
+---------------------------------------------
+GO
+DROP PROCEDURE  dbo.SetNoCheckConstraint_usp;
+PRINT 'dbo.SetNoCheckConstraint_usp was droped.';
+---------------------------------------------
+GO
+DROP PROCEDURE  dbo.SetCheckConstraint_usp;
+PRINT 'dbo.SetCheckConstraint_usp was droped.';
+---------------------------------------------
+GO
+PRINT 'Test helpers droped.';
+PRINT '---------------------------------------------';
+GO
+	]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
