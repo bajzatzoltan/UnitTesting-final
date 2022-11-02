@@ -275,9 +275,7 @@ BEGIN;
 	DECLARE @powershellScript VARCHAR(4000);
 
 	BEGIN TRY;
-	TRUNCATE TABLE dbo.TestResults
-	DBCC CHECKIDENT ('dbo.TestResults', RESEED, 1) WITH NO_INFOMSGS
-
+	SET NOCOUNT ON;
 	SELECT	@serverName_var = TFP.ServerName, 
 			@databaseName_var = TFP.DatabaseName, 
 			@testsFilePath = TFP.TestsFilePath,

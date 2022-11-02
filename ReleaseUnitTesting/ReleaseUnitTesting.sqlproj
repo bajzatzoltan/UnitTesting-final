@@ -64,6 +64,9 @@
     <Folder Include="Full\3.0.0.0_Preview_release" />
     <Folder Include="Full\3.0.0.0_Preview_release\Framework" />
     <Folder Include="Full\3.0.0.0_Preview_release\Snippets" />
+    <Folder Include="Full\3.0.0.1_Preview_release" />
+    <Folder Include="Full\3.0.0.1_Preview_release\Framework" />
+    <Folder Include="Full\3.0.0.1_Preview_release\Snippets" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Full\2.0.1.0__release\RunTests_IntegratedSec.ps1" />
@@ -74,6 +77,11 @@
     <None Include="Full\3.0.0.0_Preview_release\Snippets\TestFunctionTableComparePreview.snippet" />
     <None Include="Full\3.0.0.0_Preview_release\Snippets\TestProcedure.snippet" />
     <None Include="Full\3.0.0.0_Preview_release\Snippets\TestProcedureTableComparePreview.snippet" />
+    <None Include="Full\3.0.0.1_Preview_release\Framework\RunTests.ps1" />
+    <None Include="Full\3.0.0.1_Preview_release\Snippets\TestFunctionFull.snippet" />
+    <None Include="Full\3.0.0.1_Preview_release\Snippets\TestFunctionFullTableComparePreview.snippet" />
+    <None Include="Full\3.0.0.1_Preview_release\Snippets\TestProcedureFull.snippet" />
+    <None Include="Full\3.0.0.1_Preview_release\Snippets\TestProcedureFullTableComparePreview.snippet" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Full\2.0.1.0__release\00100_ExecuteTests.sql" />
@@ -98,5 +106,13 @@
     <None Include="Full\3.0.0.0_Preview_release\Framework\3.0.0.0_Preview_UnitTestingTestFrameworkConfiguring.sql" />
     <None Include="Full\3.0.0.0_Preview_release\Framework\3.0.0.0_Preview_UnitTestingTestFrameworkDeleting.sql" />
     <None Include="Full\3.0.0.0_Preview_release\Framework\00100_ExecuteTests.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Full\3.0.0.1_Preview_release\Framework\3.0.0.1_Preview_UnitTestingTestFramework.sql" />
+    <Build Include="Full\3.0.0.1_Preview_release\Framework\3.0.0.1_Preview_UnitTestingTestFrameworkConfiguring.sql" />
+    <Build Include="Full\3.0.0.1_Preview_release\Framework\3.0.0.1_Preview_UnitTestingTestFrameworkDeleting.sql" />
+    <Build Include="Full\3.0.0.1_Preview_release\Framework\3.0.0.1_Preview_UnitTestinTestFrameworkCreateHelpers.sql" />
+    <Build Include="Full\3.0.0.1_Preview_release\Framework\3.0.0.1_Preview_UnitTestinTestFrameworkDropHelpers.sql" />
+    <Build Include="Full\3.0.0.1_Preview_release\Framework\00100_ExecuteTests.sql" />
   </ItemGroup>
 </Project>

@@ -7,7 +7,7 @@ SET NUMERIC_ROUNDABORT OFF;
 GO
 :setvar DatabaseName "UnitTesting"
 :setvar DefaultFilePrefix "UnitTesting"
-:setvar TestDatabaseName "TESTINGDB" --DATABASE OF TESTING
+:setvar TestDatabaseName "DEV" --DATABASE OF TESTING
 
 
 GO
