@@ -28,7 +28,7 @@ IF N'$(__IsSqlCmdEnabled)' NOT LIKE N'True'
 
 
 GO
-PRINT N'3.0.0.1 PREVIEW UNIT TESTING FRAMEWORK RELEASE DELETING START'
+PRINT N'3.0.0.2 PREVIEW UNIT TESTING FRAMEWORK RELEASE DELETING START'
 
 
 USE master ;  
@@ -80,6 +80,11 @@ END;
 IF EXISTS (SELECT 1 FROM sys.objects WHERE object_id = OBJECT_ID(N'Assert.CompareTables_udf') AND TYPE in (N'IF',N'FN',N'TF',N'FS',N'FT'))
 BEGIN;
 	DROP FUNCTION Assert.CompareTables_udf;
+END;
+
+IF EXISTS (SELECT 1 FROM sys.objects WHERE object_id = OBJECT_ID(N'Assert.CompareOrderedTables_udf') AND TYPE in (N'IF',N'FN',N'TF',N'FS',N'FT'))
+BEGIN;
+	DROP FUNCTION Assert.CompareOrderedTables_udf;
 END;
 
 IF EXISTS (SELECT 1 FROM information_schema.schemata WHERE schema_name='Assert')

@@ -139,7 +139,7 @@ BEGIN;
 	END CATCH;
 		PRINT CONCAT('TEST RESULT: ', @TESTRESULT);
 		UPDATE UnitTesting.dbo.TestResults SET TestResult = @TESTRESULT WHERE TestNumber = @TESTNUMBER  AND MethodName = @METHODNAME;
-		EXEC UnitTesting.RestoreTestEnviroment_usp;
+		EXEC UnitTesting.dbo.RestoreTestEnviroment_usp;
 		PRINT '---------------------------------------------';
 END;
 GO

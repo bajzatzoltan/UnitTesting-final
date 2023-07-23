@@ -67,6 +67,7 @@
     <Folder Include="Full\3.0.0.1_Preview_release" />
     <Folder Include="Full\3.0.0.1_Preview_release\Framework" />
     <Folder Include="Full\3.0.0.1_Preview_release\Snippets" />
+    <Folder Include="Full\3.0.0.2_Preview_release" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Full\2.0.1.0__release\RunTests_IntegratedSec.ps1" />
@@ -114,5 +115,10 @@
     <Build Include="Full\3.0.0.1_Preview_release\Framework\3.0.0.1_Preview_UnitTestinTestFrameworkCreateHelpers.sql" />
     <Build Include="Full\3.0.0.1_Preview_release\Framework\3.0.0.1_Preview_UnitTestinTestFrameworkDropHelpers.sql" />
     <Build Include="Full\3.0.0.1_Preview_release\Framework\00100_ExecuteTests.sql" />
+    <Build Include="Full\3.0.0.2_Preview_release\3.0.0.2_Preview_UnitTestingTestFramework.sql" />
+    <Build Include="Full\3.0.0.2_Preview_release\3.0.0.2_Preview_UnitTestingTestFrameworkConfiguring.sql" />
+    <Build Include="Full\3.0.0.2_Preview_release\3.0.0.2_Preview_UnitTestingTestFrameworkDeleting.sql" />
+    <Build Include="Full\3.0.0.2_Preview_release\3.0.0.2_Preview_UnitTestinTestFrameworkCreateHelpers.sql" />
+    <Build Include="Full\3.0.0.2_Preview_release\3.0.0.2_Preview_UnitTestinTestFrameworkDropHelpers.sql" />
   </ItemGroup>
 </Project>

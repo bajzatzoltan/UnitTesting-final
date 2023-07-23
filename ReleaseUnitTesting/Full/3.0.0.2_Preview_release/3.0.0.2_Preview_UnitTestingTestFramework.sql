@@ -172,7 +172,7 @@ PRINT N'Creating Procedure [dbo].[AddTestframeworkParameters_usp]...';
 
 GO
 CREATE 
---OR ALTER 
+OR ALTER 
 PROCEDURE dbo.AddTestframeworkParameters_usp (
 															@serverName VARCHAR(256) = @@SERVERNAME,
 															@databaseName VARCHAR(256),
@@ -203,7 +203,7 @@ PRINT N'Creating Procedure [dbo].[DeleteTestframeworkParameters_usp]...';
 
 GO
 CREATE 
---OR ALTER 
+OR ALTER 
 PROCEDURE dbo.DeleteTestframeworkParameters_usp (
 																@serverName VARCHAR(256) = @@SERVERNAME,
 																@databaseName VARCHAR(256)
@@ -227,7 +227,7 @@ PRINT N'Creating Procedure [dbo].[AddTestScriptDirectory_usp]...';
 
 GO
 CREATE 
---OR ALTER 
+OR ALTER 
 PROCEDURE dbo.AddTestScriptDirectory_usp (	
 															@serverName VARCHAR(256) = @@SERVERNAME,
 															@databaseName VARCHAR(256),
@@ -259,7 +259,7 @@ PRINT N'Creating Procedure [dbo].[DeleteTestScriptDirectory_usp]...';
 
 GO
 CREATE 
---OR ALTER 
+OR ALTER 
 PROCEDURE dbo.DeleteTestScriptDirectory_usp (	
 															@serverName VARCHAR(256) = @@SERVERNAME,
 															@databaseName VARCHAR(256),
@@ -290,7 +290,7 @@ PRINT N'Creating Procedure [dbo].[ExecuteTests_usp]...';
 
 GO
 CREATE 
---OR ALTER 
+OR ALTER 
 PROCEDURE dbo.ExecuteTests_usp (
 												@databaseName VARCHAR(256), 
 												@directoryName VARCHAR(256),
@@ -358,7 +358,7 @@ PRINT N'Creating Procedure [dbo].[ModifyTestframeworkParameters_usp]...';
 
 GO
 CREATE 
---OR ALTER 
+OR ALTER 
 PROCEDURE dbo.ModifyTestframeworkParameters_usp (
 															@serverName VARCHAR(256) = @@SERVERNAME,
 															@databaseName VARCHAR(256),
@@ -435,7 +435,7 @@ PRINT N'Creating Procedure [Assert].[TablesComparedTypeDropper_usp]...';
 
 GO
 CREATE
---OR ALTER 
+OR ALTER 
 PROCEDURE Assert.TablesComparedTypeDropper_usp  
 AS
 BEGIN;
@@ -454,7 +454,7 @@ PRINT N'Creating Procedure [Assert].[TablesComparerFunctionDropper_usp]...';
 
 GO
 CREATE
---OR ALTER 
+OR ALTER 
 PROCEDURE Assert.TablesComparerFunctionDropper_usp  
 AS
 BEGIN;
@@ -464,7 +464,12 @@ BEGIN;
 		 BEGIN
 			SET @sqlCommand = N'DROP FUNCTION Assert.CompareTables_udf';
 			EXEC sp_executesql @sqlCommand;
-		 END
+		 END;
+	IF EXISTS (SELECT 1 FROM sys.objects WHERE object_id = OBJECT_ID(N''Assert.CompareOrderedTables_udf'') AND TYPE in (N''IF'',N''FN'',N''TF'',N''FS'',N''FT''))
+		 BEGIN
+			SET @sqlCommand = N''DROP FUNCTION Assert.CompareOrderedTables_udf'';
+			EXEC sp_executesql @sqlCommand;
+		 END;
 END;
 
 GO
@@ -472,7 +477,7 @@ PRINT N'Creating Procedure [Assert].[TablesComparedTypeFactory_usp]...';
 
 GO
 CREATE
---OR ALTER 
+OR ALTER 
 PROCEDURE Assert.TablesComparedTypeFactory_usp (
 												@columnDefinition NVARCHAR(MAX)
 												)
@@ -494,14 +499,15 @@ GO
 PRINT N'Creating Procedure [Assert].[TablesComparerFunctionFactory_usp]...';
 GO
 CREATE
---OR ALTER 
+OR ALTER 
 PROCEDURE Assert.TablesComparerFunctionFactory_usp 
 AS
 BEGIN;
 	SET NOCOUNT ON;
-	DECLARE @sqlCommand NVARCHAR(MAX);
+	DECLARE @sqlCommandCreateCompareTablesUdf NVARCHAR(MAX);
+	DECLARE @sqlCommandCreateCompareOrderedTablesUdf NVARCHAR(MAX);
 
-	SET @sqlCommand = N'CREATE
+	SET @sqlCommandCreateCompareTablesUdf = N'CREATE
 						OR ALTER 
 						FUNCTION Assert.CompareTables_udf	(	
 															@expectedTable Assert.ComparedType_ttyp READONLY, 
@@ -532,7 +538,57 @@ BEGIN;
 
 							RETURN @result;
 						END;'
-	EXEC sp_executesql @sqlCommand;
+	EXEC sp_executesql @sqlCommandCreateCompareTablesUdf;
+
+	SET @sqlCommandCreateCompareOrderedTablesUdf = N'CREATE
+						OR ALTER 
+						FUNCTION Assert.CompareOrderedTables_udf	(	
+															@expectedTable Assert.ComparedType_ttyp READONLY, 
+															@resultTable Assert.ComparedType_ttyp READONLY
+															)
+						RETURNS NVARCHAR(5) AS
+						BEGIN;
+							DECLARE @counter INT = 1;
+							DECLARE @expectedRowCount INT;
+							DECLARE @resultRowCount INT;
+							DECLARE @rowCounter INT;
+
+							SELECT @expectedRowCount = COUNT(*) FROM @expectedTable;
+							SELECT @resultRowCount = COUNT(*) FROM @resultTable;
+							IF (@expectedRowCount <> @resultRowCount)
+								BEGIN;
+									RETURN ''False'';
+								END;							
+							
+							WHILE @counter <= @expectedRowCount
+							BEGIN;
+
+								SELECT @rowCounter = COUNT(*) FROM 
+										(SELECT TOP(@counter) * FROM @expectedTable
+										EXCEPT
+										SELECT TOP(@counter) * FROM @resultTable) AS COMPARED
+									IF @rowCounter <> 0
+										BEGIN;
+											RETURN ''False'';
+										END;
+		
+									SELECT @rowCounter = COUNT(*) FROM 
+										(SELECT TOP(@counter) * FROM @resultTable
+										EXCEPT
+										SELECT TOP(@counter) * FROM @expectedTable) AS COMPARED
+									IF @rowCounter <> 0
+										BEGIN;
+											RETURN ''False'';
+										END;								
+
+								SET @counter = @counter + 1;
+
+							END;
+
+							RETURN ''True'';
+						END;'
+	EXEC sp_executesql @sqlCommandCreateCompareOrderedTablesUdf;
+
 
 END;
 
@@ -541,7 +597,7 @@ PRINT N'Creating Procedure [Assert].[TablesComparerConstructor_usp]...';
 
 GO
 CREATE
---OR ALTER 
+OR ALTER 
 PROCEDURE Assert.TablesComparerConstructor_usp (
 											@columnDefinition NVARCHAR(MAX)
 											)
@@ -557,7 +613,7 @@ PRINT N'Creating Procedure [Assert].[TablesComparerDestructor_usp]...';
 
 GO
 CREATE
---OR ALTER 
+OR ALTER 
 PROCEDURE Assert.TablesComparerDestructor_usp 
 AS
 BEGIN;
