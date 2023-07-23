@@ -56,7 +56,6 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-    <Folder Include="00100_Extensions" />
     <Folder Include="00200_UnitTests" />
     <Folder Include="00300_Delete_Extensions" />
     <Folder Include="00200_UnitTests\00050_Create_TestEnviroment" />
@@ -132,8 +131,6 @@
     <Build Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run  SqlScriptsWithPowershell\00200_UnitTests\00500_Programming_objects\0001000_tst_dbo.GetFizzBuzzResult_udf.sql" />
     <Build Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run  SqlScriptsWithPowershell\00200_UnitTests\00500_Programming_objects\0002000_tst_dbo.GetBuzzFizzResult_udf.sql" />
     <Build Include="00400_IntegrationTests\00100_TestEnviroment\00600_Tests\Run  SqlScriptsWithPowershell\00200_UnitTests\00500_Programming_objects\0003000_tst_dbo.InsertFizzBuzzResultTable_usp.sql" />
-    <None Include="00100_Extensions\2.1.1.1__UnitTestingTestFramework.sql" />
-    <None Include="00100_Extensions\2.1.1.1_UnitTestingTestFrameworkConfiguring.sql" />
     <None Include="00300_Delete_Extensions\2.1.1.1__UnitTestingTestFrameworkDeleting.sql" />
     <None Include="00400_IntegrationTests\00050_Extensions\2.1.1.1__UnitTestingTestFramework.sql" />
   </ItemGroup>

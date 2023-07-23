@@ -42,7 +42,6 @@ BEGIN;
 	DROP DATABASE [$(DatabaseName)];
 END;
 GO
-GO
 
 USE [$(TestDatabaseName)];
 GO
