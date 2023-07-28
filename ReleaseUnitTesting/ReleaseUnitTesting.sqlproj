@@ -85,6 +85,7 @@
     <None Include="Full\3.0.0.1_Preview_release\Snippets\TestFunctionFullTableComparePreview.snippet" />
     <None Include="Full\3.0.0.1_Preview_release\Snippets\TestProcedureFull.snippet" />
     <None Include="Full\3.0.0.1_Preview_release\Snippets\TestProcedureFullTableComparePreview.snippet" />
+    <None Include="Full\3.0.0.2_Preview_release\Framework\RunTests.ps1" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Full\2.0.1.0__release\00100_ExecuteTests.sql" />
@@ -111,16 +112,19 @@
     <None Include="Full\3.0.0.0_Preview_release\Framework\00100_ExecuteTests.sql" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Full\3.0.0.1_Preview_release\Framework\3.0.0.1_Preview_UnitTestingTestFramework.sql" />
-    <Build Include="Full\3.0.0.1_Preview_release\Framework\3.0.0.1_Preview_UnitTestingTestFrameworkConfiguring.sql" />
-    <Build Include="Full\3.0.0.1_Preview_release\Framework\3.0.0.1_Preview_UnitTestingTestFrameworkDeleting.sql" />
-    <Build Include="Full\3.0.0.1_Preview_release\Framework\3.0.0.1_Preview_UnitTestinTestFrameworkCreateHelpers.sql" />
-    <Build Include="Full\3.0.0.1_Preview_release\Framework\3.0.0.1_Preview_UnitTestinTestFrameworkDropHelpers.sql" />
-    <Build Include="Full\3.0.0.1_Preview_release\Framework\00100_ExecuteTests.sql" />
-    <Build Include="Full\3.0.0.2_Preview_release\Framework\3.0.0.2_Preview_UnitTestingTestFramework.sql" />
-    <Build Include="Full\3.0.0.2_Preview_release\Framework\3.0.0.2_Preview_UnitTestingTestFrameworkConfiguring.sql" />
-    <Build Include="Full\3.0.0.2_Preview_release\Framework\3.0.0.2_Preview_UnitTestingTestFrameworkDeleting.sql" />
-    <Build Include="Full\3.0.0.2_Preview_release\Framework\3.0.0.2_Preview_UnitTestingTestFrameworkDeletingHelpers.sql" />
-    <Build Include="Full\3.0.0.2_Preview_release\Framework\3.0.0.2_Preview_UnitTestinTestFrameworkCreatingHelpers.sql" />
+    <None Include="Full\3.0.0.1_Preview_release\Framework\3.0.0.1_Preview_UnitTestingTestFramework.sql" />
+    <None Include="Full\3.0.0.1_Preview_release\Framework\3.0.0.1_Preview_UnitTestingTestFrameworkConfiguring.sql" />
+    <None Include="Full\3.0.0.1_Preview_release\Framework\3.0.0.1_Preview_UnitTestingTestFrameworkDeleting.sql" />
+    <None Include="Full\3.0.0.1_Preview_release\Framework\3.0.0.1_Preview_UnitTestinTestFrameworkCreateHelpers.sql" />
+    <None Include="Full\3.0.0.1_Preview_release\Framework\3.0.0.1_Preview_UnitTestinTestFrameworkDropHelpers.sql" />
+    <None Include="Full\3.0.0.1_Preview_release\Framework\00100_ExecuteTests.sql" />
+    <None Include="Full\3.0.0.2_Preview_release\Framework\3.0.0.2_Preview_UnitTestingTestFramework.sql" />
+    <None Include="Full\3.0.0.2_Preview_release\Framework\3.0.0.2_Preview_UnitTestingTestFrameworkConfiguring.sql" />
+    <None Include="Full\3.0.0.2_Preview_release\Framework\3.0.0.2_Preview_UnitTestingTestFrameworkDeleting.sql" />
+    <None Include="Full\3.0.0.2_Preview_release\Framework\3.0.0.2_Preview_UnitTestingTestFrameworkDeletingHelpers.sql" />
+    <None Include="Full\3.0.0.2_Preview_release\Framework\3.0.0.2_Preview_UnitTestinTestFrameworkCreatingHelpers.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Full\3.0.0.2_Preview_release\Framework\ExecuteTests.sql" />
   </ItemGroup>
 </Project>
