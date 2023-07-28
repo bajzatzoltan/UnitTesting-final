@@ -1,16 +1,13 @@
-﻿PRINT N'Creating Schema [Assert]...';
-
+﻿PRINT N'UNIT TESTING HELPER CREATING START'
+GO
 
 IF NOT EXISTS (SELECT 1 FROM information_schema.schemata WHERE schema_name='Assert')
 BEGIN
   EXEC sp_executesql N'CREATE SCHEMA Assert';
 END
 
-
 GO
-PRINT N'Creating Procedure [Assert].[TablesComparedTypeDropper_usp]...';
 
-GO
 CREATE
 OR ALTER 
 PROCEDURE Assert.TablesComparedTypeDropper_usp  
@@ -25,11 +22,8 @@ BEGIN;
 		END;
 END;
 
-
 GO
-PRINT N'Creating Procedure [Assert].[TablesComparerFunctionDropper_usp]...';
 
-GO
 CREATE
 OR ALTER 
 PROCEDURE Assert.TablesComparerFunctionDropper_usp  
@@ -50,9 +44,7 @@ BEGIN;
 END;
 
 GO
-PRINT N'Creating Procedure [Assert].[TablesComparedTypeFactory_usp]...';
 
-GO
 CREATE
 OR ALTER 
 PROCEDURE Assert.TablesComparedTypeFactory_usp (
@@ -71,10 +63,8 @@ BEGIN;
 	EXEC sp_executesql @sqlCommand;
 END;
 
+GO
 
-GO
-PRINT N'Creating Procedure [Assert].[TablesComparerFunctionFactory_usp]...';
-GO
 CREATE
 OR ALTER 
 PROCEDURE Assert.TablesComparerFunctionFactory_usp 
@@ -170,9 +160,7 @@ BEGIN;
 END;
 
 GO
-PRINT N'Creating Procedure [Assert].[TablesComparerConstructor_usp]...';
 
-GO
 CREATE
 OR ALTER 
 PROCEDURE Assert.TablesComparerConstructor_usp (
@@ -186,9 +174,7 @@ BEGIN;
 END;
 
 GO
-PRINT N'Creating Procedure [Assert].[TablesComparerDestructor_usp]...';
 
-GO
 CREATE
 OR ALTER 
 PROCEDURE Assert.TablesComparerDestructor_usp 
@@ -198,3 +184,6 @@ BEGIN;
 	EXEC Assert.TablesComparerFunctionDropper_usp;
 	EXEC Assert.TablesComparedTypeDropper_usp;
 END;
+
+GO
+PRINT N'UNIT TESTING HELPER CREATING COMPLETED'

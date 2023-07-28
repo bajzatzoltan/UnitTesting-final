@@ -120,7 +120,7 @@
     <Build Include="Full\3.0.0.2_Preview_release\Framework\3.0.0.2_Preview_UnitTestingTestFramework.sql" />
     <Build Include="Full\3.0.0.2_Preview_release\Framework\3.0.0.2_Preview_UnitTestingTestFrameworkConfiguring.sql" />
     <Build Include="Full\3.0.0.2_Preview_release\Framework\3.0.0.2_Preview_UnitTestingTestFrameworkDeleting.sql" />
-    <Build Include="Full\3.0.0.2_Preview_release\Framework\3.0.0.2_Preview_UnitTestinTestFrameworkCreateHelpers.sql" />
-    <Build Include="Full\3.0.0.2_Preview_release\Framework\3.0.0.2_Preview_UnitTestinTestFrameworkDropHelpers.sql" />
+    <Build Include="Full\3.0.0.2_Preview_release\Framework\3.0.0.2_Preview_UnitTestingTestFrameworkDeletingHelpers.sql" />
+    <Build Include="Full\3.0.0.2_Preview_release\Framework\3.0.0.2_Preview_UnitTestinTestFrameworkCreatingHelpers.sql" />
   </ItemGroup>
 </Project>
